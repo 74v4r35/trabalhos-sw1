@@ -7,6 +7,35 @@
     <?php 
     require_once('php.php'); 
     ?>
+    <?php
+
+$calc=new operador();
+
+   if(isset($_POST['soma'])){
+       
+       $resultado=$calc->somar($_POST['num1'], $_POST['num2']);
+   }
+   if(isset($_POST['menos'])){
+       
+       $resultado=$calc->sub($_POST['num1'], $_POST['num2']);
+   }
+   if(isset($_POST['mult'])){
+       
+       $resultado=$calc->mult($_POST['num1'], $_POST['num2']);
+   }
+   if(isset($_POST['div'])){
+
+        if($_POST['num2']==0){
+            echo "O 2° número não poder ser 0";
+        }
+        else{
+       $resultado=$calc->div($_POST['num1'], $_POST['num2']);
+        }
+   }
+
+
+
+?>
 </head>
 <body>
     
@@ -28,7 +57,7 @@
 
         <div class="field">
             <label for="result">Total da Soma:</label>
-            <input type="text" name="total">
+            <input type="text" name="total" value="<?php echo isset($resultado)?$resultado:""; ?>">
         </div>        
         
         <div class="button">
@@ -48,45 +77,4 @@
 </body>
 
 </html>
-
-<?php
-
- $calc=new operador();
-
-    if(isset($_POST['soma'])){
-
-        $resultado;
-        
-        $resultado=$calc->somar($_POST['num1'], $_POST['num2']);
-
-        echo $resultado;
-    }
-    if(isset($_POST['menos'])){
-
-        $resultado;
-        
-        $resultado=$calc->sub($_POST['num1'], $_POST['num2']);
-
-        echo $resultado;
-    }
-    if(isset($_POST['mult'])){
-
-        $resultado;
-        
-        $resultado=$calc->mult($_POST['num1'], $_POST['num2']);
-
-        echo $resultado;
-    }
-    if(isset($_POST['div'])){
-
-        $resultado;
-        
-        $resultado=$calc->div($_POST['num1'], $_POST['num2']);
-
-        echo $resultado;
-    }
-
-
-
-?>
 
